@@ -31,7 +31,7 @@ contract FiatTokenV2_1 is FiatTokenV2 {
      * @notice Initialize v2.1
      * @param lostAndFound  The address to which the locked funds are sent
      */
-    function initializeV2_1(address lostAndFound) external {
+    function initializeV2_1(address lostAndFound) external onlyOwner {
         // solhint-disable-next-line reason-string
         require(_initializedVersion == 1);
 

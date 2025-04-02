@@ -41,7 +41,7 @@ contract FiatTokenV2_2 is FiatTokenV2_1 {
     function initializeV2_2(
         address[] calldata accountsToBlacklist,
         string calldata newSymbol
-    ) external {
+    ) external onlyOwner {
         // solhint-disable-next-line reason-string
         require(_initializedVersion == 2);
 
