@@ -34,7 +34,7 @@ contract FiatTokenV2 is FiatTokenV1_1, EIP3009, EIP2612 {
      * @notice Initialize v2
      * @param newName   New token name
      */
-    function initializeV2(string calldata newName) external {
+    function initializeV2(string calldata newName) external onlyOwner {
         // solhint-disable-next-line reason-string
         require(initialized && _initializedVersion == 0);
         name = newName;

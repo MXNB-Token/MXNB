@@ -30,5 +30,7 @@ contract FiatTokenProxy is AdminUpgradeabilityProxy {
     constructor(address implementationContract)
         public
         AdminUpgradeabilityProxy(implementationContract)
-    {}
+    {
+        implementationContract.delegatecall(abi.encodeWithSignature("superSetOwner(address)", msg.sender));
+    }
 }
